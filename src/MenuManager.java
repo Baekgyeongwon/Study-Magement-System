@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class MenuManager {
 	
 	public static void main(String[] args) {
-		int num = 0;
+		int num = 5;
 		Scanner input= new Scanner(System.in);
 		
 		while (num != 6) {
@@ -15,27 +15,51 @@ public class MenuManager {
 			System.out.println("6. Exit");
 			System.out.print("Select one number between 1-6: ");
 			num = input.nextInt();
-			
-			switch(num) {
-			case 1:
-				System.out.print("studyCode: ");
-				int studyCode = input.nextInt();
-				System.out.print("Subject name: ");
-				String subjectName = input.next();
-				System.out.print("Professor: ");
-				String profname = input.next();
-				System.out.print("Classroom: ");
-				String classroom =input.next();
-				break;
-			case 2:
-			case 3:
-			case 4:
-				System.out.print("studyCode: ");
-				int studyCode2 = input.nextInt();
+			if(num == 1) {
+				addStudy();
+			}
+			else if(num == 2) {
+				deleteStudy();
+			}
+			else if(num == 3) {
+				editStudy();
+			}
+			else if(num == 4) {
+				viewStudy();
+			}
+			else {
+				continue;
 			}
 		}
-		input.close();
-
 	}
-
+	
+	public static void addStudy() {		
+		Scanner input= new Scanner(System.in);
+		System.out.print("studyCode: ");
+		int studyCode = input.nextInt();
+		System.out.print("Subject name: ");
+		String subjectName = input.next();
+		System.out.print("Professor: ");
+		String profname = input.next();
+		System.out.print("Classroom: ");
+		String classroom =input.next();	
+		}
+	
+	public static void deleteStudy() {		
+		Scanner input= new Scanner(System.in);
+		System.out.print("studyCode: ");
+		int studyCode = input.nextInt();
+		}
+	
+	public static void editStudy() {		
+		Scanner input= new Scanner(System.in);
+		System.out.print("studyCode: ");
+		int studyCode = input.nextInt();
+		}
+	
+	public static void viewStudy() {		
+		Scanner input= new Scanner(System.in);
+		System.out.print("studyCode: ");
+		int studyCode = input.nextInt();
+		}
 }
