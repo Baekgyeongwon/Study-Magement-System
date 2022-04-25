@@ -47,7 +47,7 @@ public class StudyManager {
 			}
 		}
 		
-		if (index >0) {
+		if (index >=0) {
 			studies.remove(index);
 			System.out.println("the study " +studyCode +"is deleted");
 		}
