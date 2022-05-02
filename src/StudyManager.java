@@ -6,6 +6,7 @@ import study.Mathematics;
 import study.Programming;
 import study.Study;
 import study.StudyKind;
+
 public class StudyManager {
 	ArrayList<Study> studies = new ArrayList<Study>();
 	Scanner input;
@@ -16,7 +17,7 @@ public class StudyManager {
 	public void addStudy() {
 		int kind = 0;
 		Study study;
-		while(kind!=1 && kind !=2) {
+		while(kind!=1 && kind !=2 && kind !=3 && kind !=4) {
 			System.out.print("1 for Dynamics / ");
 			System.out.print("2 for Humanities / ");
 			System.out.print("3 for Programming / ");
@@ -48,7 +49,7 @@ public class StudyManager {
 				break;
 			}
 			else {
-				System.out.print("Select num for Study Kind between 1 and 2: ");
+				System.out.print("Select num for Study Kind between 1, 2, 3, and 4: ");
 			}
 		}
 	}

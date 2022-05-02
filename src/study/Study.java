@@ -93,7 +93,8 @@ public class Study {
 			break;
 		default:
 		}
-		System.out.println("kind: " +skind+ "code: "+code+" subject: "+subject+" prof: "+prof+" classroom: "+classroom);
+		System.out.println("kind: " +skind+ "code: "+code+" subject: "
+				+subject+" prof: "+prof+" classroom: "+classroom);
 	}
 	
 	public void getUserInput(Scanner input) {
