@@ -2,7 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import study.Humanities;
+import study.Mathematics;
+import study.Programming;
 import study.Study;
+import study.StudyKind;
 public class StudyManager {
 	ArrayList<Study> studies = new ArrayList<Study>();
 	Scanner input;
@@ -15,17 +18,31 @@ public class StudyManager {
 		Study study;
 		while(kind!=1 && kind !=2) {
 			System.out.print("1 for Dynamics / ");
-			System.out.println("2 for Humanities ");
-			System.out.print("Select num for Study Kind between 1 and 2: ");
+			System.out.print("2 for Humanities / ");
+			System.out.print("3 for Programming / ");
+			System.out.println("4 for Mathematics ");
+			System.out.print("Select num 1, 2, 3, or 4 for Study Kind: ");
 			kind = input.nextInt();
 			if(kind == 1 ) {
-				study = new Study();
+				study = new Study(StudyKind.Dynamics);
 				study.getUserInput(input);
 				studies.add(study);
 				break;
 			}
 			else if (kind == 2) {
-				study = new Humanities();
+				study = new Humanities(StudyKind.Humanities);
+				study.getUserInput(input);
+				studies.add(study);
+				break;
+			}
+			else if (kind == 3) {
+				study = new Programming(StudyKind.Programming);
+				study.getUserInput(input);
+				studies.add(study);
+				break;
+			}
+			else if (kind == 4) {
+				study = new Mathematics(StudyKind.Mathematics);
 				study.getUserInput(input);
 				studies.add(study);
 				break;
@@ -49,7 +66,7 @@ public class StudyManager {
 		
 		if (index >=0) {
 			studies.remove(index);
-			System.out.println("the study " +studyCode +"is deleted");
+			System.out.println("the study " +studyCode +" is deleted");
 		}
 		else {
 			System.out.println("The study has not been registered.");

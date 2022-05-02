@@ -12,12 +12,24 @@ public class Study {
 	public Study() {
 	}
 	
+	public Study (StudyKind kind) {
+		this.kind = kind;
+	}
+	
 	public Study (int code, String subject) {
 		this.code = code;
 		this.subject= subject;
 	}
 
 	public Study (int code, String subject, String prof, String classroom) {
+		this.code = code;
+		this.subject= subject;
+		this.prof= prof;
+		this.classroom= classroom;
+	}
+	
+	public Study (StudyKind kind, int code, String subject, String prof, String classroom) {
+		this.kind = kind;
 		this.code = code;
 		this.subject= subject;
 		this.prof= prof;
@@ -64,9 +76,24 @@ public class Study {
 		this.classroom = classroom;
 	}
 
-
 	public void printInfo() {
-		System.out.println("code: "+code+" subject: "+subject+" prof: "+prof+" classroom: "+classroom);
+		String skind = "none";
+		switch(this.kind) {
+		case Dynamics:
+			skind = "Dynamics";
+			break;
+		case Humanities:
+			skind = "Humanities";
+			break;
+		case Programming:
+			skind = "Programming";
+			break;
+		case Mathematics:
+			skind = "Mathematics";
+			break;
+		default:
+		}
+		System.out.println("kind: " +skind+ "code: "+code+" subject: "+subject+" prof: "+prof+" classroom: "+classroom);
 	}
 	
 	public void getUserInput(Scanner input) {

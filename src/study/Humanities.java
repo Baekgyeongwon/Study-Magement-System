@@ -3,6 +3,10 @@ package study;
 import java.util.Scanner;
 
 public class Humanities extends Study {
+	public Humanities (StudyKind kind) {
+		super(kind);
+	}
+	
 	public void getUserInput(Scanner input) {
 		System.out.print("studyCode: ");
 		int code = input.nextInt();
