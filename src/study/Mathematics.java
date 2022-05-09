@@ -2,7 +2,8 @@ package study;
 
 import java.util.Scanner;
 
-public class Mathematics extends Study {
+public class Mathematics extends Study implements StudyInput {
+	
 	public Mathematics (StudyKind kind) {
 		super(kind);
 	}
@@ -33,12 +34,33 @@ public class Mathematics extends Study {
 			}
 			
 			else if (answer == 'n' || answer == 'N') {
-				this.setClassroom("");
+				this.setClassroom("online");
 				break;
 			}
 			else {
 			}
 		}
+	}
+	
+	public void printInfo() {
+		String skind = "none";
+		switch(this.kind) {
+		case Dynamics:
+			skind = "Dynamics";
+			break;
+		case Humanities:
+			skind = "Humanities";
+			break;
+		case Programming:
+			skind = "Programming";
+			break;
+		case Mathematics:
+			skind = "Mathematics";
+			break;
+		default:
+		}
+		System.out.println("kind: " +skind+ " code: "+code+" subject: "
+				+subject+" prof: "+prof+" classroom: "+classroom);
 	}
 
 }

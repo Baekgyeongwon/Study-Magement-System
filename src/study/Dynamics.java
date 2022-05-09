@@ -2,9 +2,9 @@ package study;
 
 import java.util.Scanner;
 
-public class Humanities extends Study implements StudyInput {
+public class Dynamics extends Study implements StudyInput {
 	
-	public Humanities (StudyKind kind) {
+	public Dynamics (StudyKind kind) {
 		super(kind);
 	}
 	
@@ -62,5 +62,5 @@ public class Humanities extends Study implements StudyInput {
 		System.out.println("kind: " +skind+ " code: "+code+" subject: "
 				+subject+" prof: "+prof+" classroom: "+classroom);
 	}
-	
+
 }

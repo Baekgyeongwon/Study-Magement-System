@@ -2,7 +2,8 @@ package study;
 
 import java.util.Scanner;
 
-public class Programming extends Study {
+public class Programming extends Study implements StudyInput {
+	
 	public Programming (StudyKind kind) {
 		super(kind);
 	}
@@ -34,7 +35,7 @@ public class Programming extends Study {
 			}
 			
 			else if (answer == 'n' || answer == 'N') {
-				this.setClassroom("");
+				this.setClassroom("online");
 				break;
 			}
 			else {
@@ -59,6 +60,7 @@ public class Programming extends Study {
 			break;
 		default:
 		}
-		System.out.println("kind: " +skind+ "code: "+code+" subject: "+subject+" prof: "+prof+" classroom: "+classroom);
+		System.out.println("kind: " +skind+ " code: "+code+" subject: "+subject+" prof: "+prof+" classroom: "+classroom);
 	}
+	
 }

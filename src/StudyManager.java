@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import study.Dynamics;
 import study.Humanities;
 import study.Mathematics;
 import study.Programming;
-import study.Study;
+import study.StudyInput;
 import study.StudyKind;
 
 public class StudyManager {
-	ArrayList<Study> studies = new ArrayList<Study>();
+	ArrayList<StudyInput> studies = new ArrayList<StudyInput>();
 	Scanner input;
 	StudyManager(Scanner input){
 		this.input= input;
@@ -16,7 +16,7 @@ public class StudyManager {
 	
 	public void addStudy() {
 		int kind = 0;
-		Study study;
+		StudyInput studyInput;
 		while(kind!=1 && kind !=2 && kind !=3 && kind !=4) {
 			System.out.print("1 for Dynamics / ");
 			System.out.print("2 for Humanities / ");
@@ -25,27 +25,27 @@ public class StudyManager {
 			System.out.print("Select num 1, 2, 3, or 4 for Study Kind: ");
 			kind = input.nextInt();
 			if(kind == 1 ) {
-				study = new Study(StudyKind.Dynamics);
-				study.getUserInput(input);
-				studies.add(study);
+				studyInput = new Dynamics(StudyKind.Dynamics);
+				studyInput.getUserInput(input);
+				studies.add(studyInput);
 				break;
 			}
 			else if (kind == 2) {
-				study = new Humanities(StudyKind.Humanities);
-				study.getUserInput(input);
-				studies.add(study);
+				studyInput = new Humanities(StudyKind.Humanities);
+				studyInput.getUserInput(input);
+				studies.add(studyInput);
 				break;
 			}
 			else if (kind == 3) {
-				study = new Programming(StudyKind.Programming);
-				study.getUserInput(input);
-				studies.add(study);
+				studyInput = new Programming(StudyKind.Programming);
+				studyInput.getUserInput(input);
+				studies.add(studyInput);
 				break;
 			}
 			else if (kind == 4) {
-				study = new Mathematics(StudyKind.Mathematics);
-				study.getUserInput(input);
-				studies.add(study);
+				studyInput = new Mathematics(StudyKind.Mathematics);
+				studyInput.getUserInput(input);
+				studies.add(studyInput);
 				break;
 			}
 			else {
@@ -79,8 +79,8 @@ public class StudyManager {
 		System.out.print("studyCode: ");
 		int studyCode = input.nextInt();
 		for(int i=0; i<studies.size(); i++) {
-			Study study = studies.get(i);
-			if (study.getCode() ==studyCode) {
+			StudyInput studyInput = studies.get(i);
+			if (studyInput.getCode() ==studyCode) {
 				int num = -1;
 				while (num != 5) {
 					System.out.println("1. Edit StudyCode");
@@ -93,22 +93,22 @@ public class StudyManager {
 					if(num == 1) {
 						System.out.print("StudyCode: ");
 						int code= input.nextInt();
-						study.setCode(code);
+						studyInput.setCode(code);
 					}
 					else if(num == 2) {
 						System.out.print("Subject name: ");
 						String subject= input.next();
-						study.setSubject(subject);
+						studyInput.setSubject(subject);
 					}
 					else if(num == 3) {
 						System.out.print("Professor: ");
 						String prof= input.next();
-						study.setProf(prof);
+						studyInput.setProf(prof);
 					}
 					else if(num == 4) {
 						System.out.print("Classroom: ");
 						String classroom= input.next();
-						study.setClassroom(classroom);
+						studyInput.setClassroom(classroom);
 					}
 					else {
 						continue;

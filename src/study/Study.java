@@ -2,7 +2,7 @@ package study;
 
 import java.util.Scanner;
 
-public class Study {
+public abstract class Study {
 	protected StudyKind kind = StudyKind.Dynamics;
 	protected int code;
 	protected String subject;
@@ -76,42 +76,6 @@ public class Study {
 		this.classroom = classroom;
 	}
 
-	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
-		case Dynamics:
-			skind = "Dynamics";
-			break;
-		case Humanities:
-			skind = "Humanities";
-			break;
-		case Programming:
-			skind = "Programming";
-			break;
-		case Mathematics:
-			skind = "Mathematics";
-			break;
-		default:
-		}
-		System.out.println("kind: " +skind+ "code: "+code+" subject: "
-				+subject+" prof: "+prof+" classroom: "+classroom);
-	}
-	
-	public void getUserInput(Scanner input) {
-		System.out.print("studyCode: ");
-		int code = input.nextInt();
-		this.setCode(code);
+	public abstract void printInfo();
 		
-		System.out.print("Subject name: ");
-		String subject = input.next();
-		this.setSubject(subject);
-		
-		System.out.print("Professor: ");
-		String prof = input.next();
-		this.setProf(prof);
-		
-		System.out.print("Classroom: ");
-		String classroom =input.next();
-		this.setClassroom(classroom);
-	}
 }
