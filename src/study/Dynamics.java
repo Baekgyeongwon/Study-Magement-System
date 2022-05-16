@@ -1,7 +1,6 @@
 package study;
 
 import java.util.Scanner;
-
 import exception.ClassroomFormatException;
 
 public class Dynamics extends Study implements StudyInput {
@@ -58,9 +57,6 @@ public class Dynamics extends Study implements StudyInput {
 				+subject+" prof: "+prof+" classroom: "+classroom);
 	}
 	
-	public void setStudyClassroom(String classroom) {}
-		
-
 }
 
 

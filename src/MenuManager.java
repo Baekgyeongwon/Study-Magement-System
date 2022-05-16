@@ -1,6 +1,5 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import exception.ClassroomFormatException;
 
 public class MenuManager {

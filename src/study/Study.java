@@ -1,7 +1,6 @@
 package study;
 
 import java.util.Scanner;
-
 import exception.ClassroomFormatException;
 
 public abstract class Study {
@@ -92,7 +91,7 @@ public abstract class Study {
 	}
 
 	public void setClassroom(String classroom) throws ClassroomFormatException {
-		if(!(classroom.contains("-")) || !(classroom.equals("online"))) {
+		if(!(classroom.contains("-")) && !(classroom.equals("online"))) {
 			throw new ClassroomFormatException();
 		}
 		

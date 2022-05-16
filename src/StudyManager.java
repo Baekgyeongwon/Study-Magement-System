@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import exception.ClassroomFormatException;
 import study.Dynamics;
 import study.Humanities;
