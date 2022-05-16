@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import exception.ClassroomFormatException;
 import study.Dynamics;
 import study.Humanities;
 import study.Mathematics;
@@ -14,42 +17,50 @@ public class StudyManager {
 		this.input= input;
 	}
 	
-	public void addStudy() {
+	public void addStudy() throws ClassroomFormatException {
 		int kind = 0;
 		StudyInput studyInput;
-		while(kind!=1 && kind !=2 && kind !=3 && kind !=4) {
-			System.out.print("1 for Dynamics / ");
-			System.out.print("2 for Humanities / ");
-			System.out.print("3 for Programming / ");
-			System.out.println("4 for Mathematics ");
-			System.out.print("Select num 1, 2, 3, or 4 for Study Kind: ");
-			kind = input.nextInt();
-			if(kind == 1 ) {
-				studyInput = new Dynamics(StudyKind.Dynamics);
-				studyInput.getUserInput(input);
-				studies.add(studyInput);
-				break;
-			}
-			else if (kind == 2) {
-				studyInput = new Humanities(StudyKind.Humanities);
-				studyInput.getUserInput(input);
-				studies.add(studyInput);
-				break;
-			}
-			else if (kind == 3) {
-				studyInput = new Programming(StudyKind.Programming);
-				studyInput.getUserInput(input);
-				studies.add(studyInput);
-				break;
-			}
-			else if (kind == 4) {
-				studyInput = new Mathematics(StudyKind.Mathematics);
-				studyInput.getUserInput(input);
-				studies.add(studyInput);
-				break;
-			}
-			else {
-				System.out.print("Select num for Study Kind between 1, 2, 3, and 4: ");
+		while(kind < 1 || kind > 4) {
+			try {
+				System.out.print("1 for Dynamics / ");
+				System.out.print("2 for Humanities / ");
+				System.out.print("3 for Programming / ");
+				System.out.println("4 for Mathematics ");
+				System.out.print("Select num 1, 2, 3, or 4 for Study Kind: ");
+				kind = input.nextInt();
+				if(kind == 1 ) {
+					studyInput = new Dynamics(StudyKind.Dynamics);
+					studyInput.getUserInput(input);
+					studies.add(studyInput);
+					break;
+				}
+				else if (kind == 2) {
+					studyInput = new Humanities(StudyKind.Humanities);
+					studyInput.getUserInput(input);
+					studies.add(studyInput);
+					break;
+				}
+				else if (kind == 3) {
+					studyInput = new Programming(StudyKind.Programming);
+					studyInput.getUserInput(input);
+					studies.add(studyInput);
+					break;
+				}
+				else if (kind == 4) {
+					studyInput = new Mathematics(StudyKind.Mathematics);
+					studyInput.getUserInput(input);
+					studies.add(studyInput);
+					break;
+				}
+				else {
+					System.out.print("Select num for Study Kind between 1, 2, 3, and 4: ");
+				}
+			}catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 and 4!");
+				if(input.hasNext()) {
+					input.next();
+				}
+				kind = -1;
 			}
 		}
 	}
@@ -75,7 +86,7 @@ public class StudyManager {
 		}
 	}
 	
-	public void editStudy() {		
+	public void editStudy() throws ClassroomFormatException {		
 		System.out.print("studyCode: ");
 		int studyCode = input.nextInt();
 		for(int i=0; i<studies.size(); i++) {

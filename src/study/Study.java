@@ -2,6 +2,8 @@ package study;
 
 import java.util.Scanner;
 
+import exception.ClassroomFormatException;
+
 public abstract class Study {
 	protected StudyKind kind = StudyKind.Dynamics;
 	protected int code;
@@ -71,9 +73,44 @@ public abstract class Study {
 	public String getClassroom() {
 		return classroom;
 	}
+	
+	public void setStudyCode(Scanner input) {
+		System.out.print("StudyCode: ");
+		int code= input.nextInt();
+		this.setCode(code);
+	}
+	
+	public void setStudySubject(Scanner input) {
+		System.out.print("Subject name: ");
+		String subject = input.next();
+		this.setSubject(subject);
+	}
+	public void setStudyProfessor(Scanner input) {
+		System.out.print("Professor: ");
+		String prof = input.next();
+		this.setProf(prof);
+	}
 
-	public void setClassroom(String classroom) {
+	public void setClassroom(String classroom) throws ClassroomFormatException {
+		if(!(classroom.contains("-")) || !(classroom.equals("online"))) {
+			throw new ClassroomFormatException();
+		}
+		
 		this.classroom = classroom;
+	}
+	
+	public void setStudyClassroom(Scanner input) {
+		String classroom = "";
+		while(!classroom.contains("-")) {
+			System.out.print("Classroom: ");
+			classroom= input.next();
+			try {
+				this.setClassroom(classroom);
+			} catch(ClassroomFormatException e) {
+				System.out.println("Incorrect Classroom Format. put classroom with -. ");
+			}
+		}
+		
 	}
 
 	public abstract void printInfo();

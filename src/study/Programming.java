@@ -2,6 +2,8 @@ package study;
 
 import java.util.Scanner;
 
+import exception.ClassroomFormatException;
+
 public class Programming extends Study implements StudyInput {
 	
 	public Programming (StudyKind kind) {
@@ -27,18 +29,23 @@ public class Programming extends Study implements StudyInput {
 		while(answer !='y' && answer !='Y' && answer !='n' && answer !='N') {
 			System.out.print("Is it offline class? (Y/N): ");
 			answer = input.next().charAt(0);
-			if(answer=='y' || answer == 'Y') {
-				System.out.print("Classroom: ");
-				String classroom =input.next();
-				this.setClassroom(classroom);
-				break;
+			try {
+				if(answer=='y' || answer == 'Y') {
+					System.out.print("Classroom: ");
+					String classroom =input.next();
+					this.setClassroom(classroom);
+					break;
+				}
+				
+				else if (answer == 'n' || answer == 'N') {
+					this.setClassroom("online");
+					break;
+				}
+				else {
+				}
 			}
-			
-			else if (answer == 'n' || answer == 'N') {
-				this.setClassroom("online");
-				break;
-			}
-			else {
+			catch(ClassroomFormatException e) {
+				System.out.println("Incorrect Classroom Format. put classroom with -. ");
 			}
 		}
 	}
@@ -63,4 +70,19 @@ public class Programming extends Study implements StudyInput {
 		System.out.println("kind: " +skind+ " code: "+code+" subject: "+subject+" prof: "+prof+" classroom: "+classroom);
 	}
 	
+	public void setStudyClassroom(String classroom) {
+		classroom = "";
+		while(!classroom.contains("-")) {
+			System.out.print("Classroom: ");
+			Scanner input = null;
+			classroom= input.next();
+			try {
+				this.setClassroom(classroom);
+			} catch(ClassroomFormatException e) {
+				System.out.println("Incorrect Classroom Format. put classroom with -. ");
+			}
+		}
+	}
+
+		
 }
