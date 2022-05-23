@@ -1,14 +1,28 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import exception.ClassroomFormatException;
+import log.EventLogger;
 
 public class MenuManager {
+	static EventLogger logger = new EventLogger("log.txt");
 	
 	public static void main(String[] args) throws ClassroomFormatException {
+		
 		Scanner input= new Scanner(System.in);
-		StudyManager studyManager = new StudyManager(input);
+		StudyManager studyManager = getObject("studymanager.ser");
+		if(studyManager == null) {
+			studyManager = new StudyManager(input);
+		}
+		
 	
 		selectMenu(input, studyManager);
+		putObject(studyManager, "studymanager.ser");
 	
 	}
 	
@@ -20,15 +34,19 @@ public class MenuManager {
 				num = input.nextInt();
 				if(num == 1) {
 					studyManager.addStudy();
+					logger.log("add a study");
 				}
 				else if(num == 2) {
 					studyManager.deleteStudy();
+					logger.log("delete a study");
 				}
 				else if(num == 3) {
 					studyManager.editStudy();
+					logger.log("edit a study");
 				}
 				else if(num == 4) {
 					studyManager.viewStudies();
+					logger.log("view a list of study");
 				}
 				else {
 					continue;
@@ -52,6 +70,43 @@ public class MenuManager {
 		System.out.print("Select one number between 1 and 5: ");
 	}
 	
+	public static StudyManager getObject(String filename) {
+		StudyManager studyManager = null;
+		
+		
+		try {
+			FileInputStream file = new FileInputStream(filename);
+			ObjectInputStream in = new ObjectInputStream(file);
+			
+			studyManager = (StudyManager) in.readObject();
+			
+			in.close();
+			file.close();
+		} catch (FileNotFoundException e) {
+			return studyManager;
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return studyManager;
+	}
 	
+	public static void putObject(StudyManager studyManager, String filename) {
+		try {
+			FileOutputStream file = new FileOutputStream(filename);
+			ObjectOutputStream out = new ObjectOutputStream(file);
+			
+			out.writeObject(studyManager);
+			
+			out.close();
+			file.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
 

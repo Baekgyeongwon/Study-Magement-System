@@ -1,9 +1,15 @@
 package study;
 
+import java.io.Serializable;
 import java.util.Scanner;
 import exception.ClassroomFormatException;
 
-public abstract class Study {
+public abstract class Study implements StudyInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2505944391460750985L;
+	
 	protected StudyKind kind = StudyKind.Dynamics;
 	protected int code;
 	protected String subject;
@@ -109,9 +115,7 @@ public abstract class Study {
 				System.out.println("Incorrect Classroom Format. put classroom with -. ");
 			}
 		}
-		
 	}
 
 	public abstract void printInfo();
-		
 }
