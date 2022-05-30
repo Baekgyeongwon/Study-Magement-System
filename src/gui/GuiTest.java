@@ -6,6 +6,8 @@ public class GuiTest {
 		MenuSelection menuselection = new MenuSelection();
 		
 		StudyAdder studentadder = new StudyAdder();
+		
+		StudyViewer studentviewer = new StudyViewer();
 	}
 
 }
