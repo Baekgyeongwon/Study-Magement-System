@@ -2,9 +2,13 @@ package gui;
 
 import javax.swing.*;
 
-public class StudyAdder extends JFrame{
+public class StudyAdder extends JPanel{
 	
-	public StudyAdder() {
+	WindowFrame frame;
+	
+	public StudyAdder(WindowFrame frame) {
+		this.frame = frame;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
 		
@@ -37,9 +41,7 @@ public class StudyAdder extends JFrame{
 		
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 		
-		this.setSize(300, 300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setContentPane(panel);
+		this.add(panel);
 		this.setVisible(true);
 
 	}

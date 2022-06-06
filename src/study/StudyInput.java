@@ -7,7 +7,13 @@ import exception.ClassroomFormatException;
 public interface StudyInput {
 
 	public int getCode();
-
+	
+	public String getSubject();
+	
+	public String getProf();
+	
+	public String getClassroom();
+	
 	public void setCode(int code);
 
 	public void setSubject(String subject);

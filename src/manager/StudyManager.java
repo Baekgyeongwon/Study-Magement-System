@@ -1,3 +1,4 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -7,6 +8,7 @@ import study.Dynamics;
 import study.Humanities;
 import study.Mathematics;
 import study.Programming;
+import study.Study;
 import study.StudyInput;
 import study.StudyKind;
 
@@ -142,6 +144,14 @@ public class StudyManager implements Serializable {
 		for(int i=0; i<studies.size(); i++) {
 			studies.get(i).printInfo();
 		}
+	}
+	
+	public int size() {
+		return studies.size();
+	}
+	
+	public StudyInput get(int index) {
+		return (Study) studies.get(index);
 	}
 
 }
