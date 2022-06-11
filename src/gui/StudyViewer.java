@@ -12,6 +12,37 @@ public class StudyViewer extends JPanel{
 	
 	StudyManager studyManager;
 
+	public StudyManager getStudyManager() {
+		return studyManager;
+	}
+
+	public void setStudyManager(StudyManager studyManager) {
+		this.studyManager = studyManager;
+		this.removeAll();
+		
+		DefaultTableModel model = new DefaultTableModel();
+		model.addColumn("Code");
+		model.addColumn("Subject");
+		model.addColumn("Professor");
+		model.addColumn("Classroom");
+		
+		for(int i=0; i<studyManager.size(); i++) {
+			Vector row = new Vector();
+			StudyInput si = studyManager.get(i);
+			row.add(si.getCode());
+			row.add(si.getSubject());
+			row.add(si.getProf());
+			row.add(si.getClassroom());
+			model.addRow(row);
+		}
+		
+		JTable table = new JTable(model);
+		JScrollPane sp = new JScrollPane(table);
+		
+		this.add(sp);
+		
+	}
+
 	public StudyViewer(WindowFrame frame, StudyManager studyManager) {
 		this.frame = frame;
 		this.studyManager = studyManager;

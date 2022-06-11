@@ -24,6 +24,16 @@ public class StudyManager implements Serializable {
 		this.input= input;
 	}
 	
+	public void addStudent(int code, String subject, String prof, String classroom) throws ClassroomFormatException {
+		StudyInput studyInput = new Dynamics(StudyKind.Dynamics);
+		studyInput.getUserInput(input);
+		studies.add(studyInput);
+	}
+	
+	public void addStudent(StudyInput studyInput) {
+		studies.add(studyInput);
+	}
+	
 	public void addStudy() throws ClassroomFormatException {
 		int kind = 0;
 		StudyInput studyInput;

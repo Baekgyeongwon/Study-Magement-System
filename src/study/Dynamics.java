@@ -9,6 +9,7 @@ public class Dynamics extends Study implements StudyInput {
 		super(kind);
 	}
 	
+
 	public void getUserInput(Scanner input) throws ClassroomFormatException {
 		setStudyCode(input);
 		setStudySubject(input);

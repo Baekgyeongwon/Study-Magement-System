@@ -2,12 +2,18 @@ package gui;
 
 import javax.swing.*;
 
+import listners.StudyAdderCancelListener;
+import listners.StudyAdderListener;
+import manager.StudyManager;
+
 public class StudyAdder extends JPanel{
 	
 	WindowFrame frame;
+	StudyManager studyManager;
 	
-	public StudyAdder(WindowFrame frame) {
+	public StudyAdder(WindowFrame frame, StudyManager studyManager) {
 		this.frame = frame;
+		this.studyManager = studyManager;
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -36,8 +42,14 @@ public class StudyAdder extends JPanel{
 		panel.add(labelClassroom);
 		panel.add(fieldClassroom);
 		
-		panel.add(new JButton("save"));
-		panel.add(new JButton("cancel"));
+		JButton saveButton = new JButton("save");
+		saveButton.addActionListener(new StudyAdderListener(fieldCode, fieldSubject, fieldProf, fieldClassroom, studyManager));
+		
+		JButton cancelButton = new JButton("cancel");
+		cancelButton.addActionListener(new StudyAdderCancelListener(frame));
+		
+		panel.add(saveButton);
+		panel.add(cancelButton);
 		
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 		
